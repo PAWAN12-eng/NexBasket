@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "name":"blikit",
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "public/$1"
+      }
+    ],
+    
+  }
+  
