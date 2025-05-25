@@ -27,7 +27,6 @@ const DisplayCartItem = ({ close }) => {
     toast("Please Login");
   };
 
-  // Disable body scroll when cart is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -47,8 +46,8 @@ const DisplayCartItem = ({ close }) => {
   return (
     <section className="bg-neutral-900 fixed inset-0 bg-opacity-50 z-50">
       <div className="bg-white w-full max-w-sm h-full ml-auto flex flex-col">
-        {/* Header Section */}
-        <div className="flex items-center justify-between p-4 shadow-md">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 shadow-md shrink-0">
           <h2 className="font-semibold text-lg">Cart</h2>
           <button onClick={() => navigate("/")} className="lg:hidden">
             <IoClose size={20} />
@@ -57,18 +56,19 @@ const DisplayCartItem = ({ close }) => {
             <IoClose size={25} />
           </button>
         </div>
-
-        {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto bg-blue-50 px-4 py-2">
-          {/* Savings Section */}
-          <div className="text-sm pb-2">
+        <div className="text-sm p-2 bg-blue-50">
             <div className="flex justify-between bg-blue-200 px-3 py-2 rounded-2xl">
               <p className="font-semibold text-blue-500">Your total savings</p>
               <p className="font-semibold text-blue-500">₹{totalDiscount}</p>
             </div>
           </div>
 
-          {/* Cart Items */}
+        {/* Scrollable Cart Items */}
+        <div className="flex-1 overflow-y-auto bg-blue-50 px-4 py-2">
+          {/* Savings Section */}
+         
+
+          {/* Cart Items List */}
           <div className="space-y-2">
             {cartItem.length > 0 ? (
               cartItem.map((item, index) => (
@@ -121,9 +121,11 @@ const DisplayCartItem = ({ close }) => {
               </div>
             )}
           </div>
+        </div>
 
-          {/* Bill Details */}
-          <div className="mt-2 bg-white p-2 rounded-lg shadow-sm">
+        {/* Bill Summary */}
+        <div className="p-3 bg-blue-50">
+          <div className="bg-white p-2 rounded-lg shrink-0">
             <h3 className="lg:text-lg text-sm font-semibold mb-1">
               Bill Details
             </h3>
@@ -138,9 +140,7 @@ const DisplayCartItem = ({ close }) => {
                 </div>
               </div>
               <div className="flex justify-between">
-                <p className="font-medium lg:text-sm text-xs">
-                  Total Quantity
-                </p>
+                <p className="font-medium lg:text-sm text-xs">Total Quantity</p>
                 <p className="text-sm text-gray-600">{totalQty}</p>
               </div>
               <div className="flex justify-between">
@@ -161,16 +161,13 @@ const DisplayCartItem = ({ close }) => {
                 </p>
               </div>
               <div className="flex justify-between">
-                <p className="font-medium lg:text-sm text-xs">
-                  Grand Total
-                </p>
+                <p className="font-medium lg:text-sm text-xs">Grand Total</p>
                 <p className="text-sm font-medium ">₹{grandTotal}</p>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Fixed Footer */}
+        {/* Proceed Button */}
         <div className="shrink-0 p-3 bg-white shadow-inner">
           <div
             className="flex justify-between items-center bg-green-700 py-3 px-2 text-white rounded-lg cursor-pointer"
