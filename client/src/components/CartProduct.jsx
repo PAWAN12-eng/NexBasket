@@ -49,13 +49,25 @@ const CartProduct = ({ data }) => {
       to={url}
       className="relative border px-3 pb-2 grid gap-1 lg:gap-3 lg:max-w-52 max-w-40 lg:min-w-52 min-w-40 rounded-lg bg-white"
     >
-              {data.discount > 0 && (
-          <div className="absolute top-0 left-1 z-10">
-            <span className="bg-green-500 text-white text-[11px] lg:text-xs font-bold px-2 py-0.5 rounded shadow-md tracking-wide transition-transform duration-300 ease-in-out">
-              {data.discount}% OFF
-            </span>
+         {data.discount > 0 && (
+        <div className="absolute top-0 left-1 z-10 hidden lg:block">
+          <span className="bg-green-500 text-white text-[11px] lg:text-xs font-bold px-2 py-0.5 rounded shadow-md tracking-wide transition-transform duration-300 ease-in-out">
+            {data.discount}% OFF
+          </span>
+        </div>
+      )}
+
+      {data.discount > 0 && (
+        <div className="absolute top-0 left-0 z-0 block lg:hidden">
+          <div className="bg-green-500 text-white text-xs font-bold px-1 py-0.5 rounded-md shadow-sm">
+            <div className="text-[0.65rem] leading-tight text-center">
+              {data.discount}%
+            </div>
+            <div className="text-[0.60rem] text-center">OFF</div>
           </div>
-        )}
+        </div>
+      )}
+
       <div className="relative min-h-20 max-h-20 lg:min-h-32 lg:max-h-32 overflow-hidden rounded-lg">
         {/* Discount badge */}
 
